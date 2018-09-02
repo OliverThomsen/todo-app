@@ -1,5 +1,5 @@
 const express = require('express')
-const todo = require('./controllers/todo')
+const todoController = require('./controllers/todoController')
 
 app = express()
 
@@ -9,4 +9,4 @@ app.use(express.static('./public'))
 app.listen(3000)
 
 // Run controllers
-todo(app)
+todoController(app)
