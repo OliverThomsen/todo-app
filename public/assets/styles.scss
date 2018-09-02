@@ -1,0 +1,114 @@
+* { font-family: helvetica-light; }
+
+body {
+    margin: 0;
+
+    section {
+        $border-color: #dcdcdc;
+
+        margin: auto;
+        padding: 48px;
+        max-width: 800px;
+
+        h1 { margin: 0 0 12px; }
+
+        li, input {
+            margin-left: 36px;
+            width: calc(100% - 36px);
+            color: #191919;
+            border: none;
+            border-bottom: 1px solid $border-color;
+            padding: 12px 0;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border-top: 1px solid $border-color;
+
+            &.hide-completed li.done {
+                display: none;
+            }
+
+            li {
+                position: relative;
+                cursor: pointer;
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: -36px;
+                    height: 24px;
+                    width: 24px;
+                    transform: translateY(-50%);
+                    border-radius: 50%;
+                    border: 1px solid #0ac50a;
+                }
+
+                &.done {
+                    color: #cccccc;
+
+                    span::before {
+                        content: '';
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        margin: 4px;
+                        border-radius: 50%;
+                        background-color: #0ac50a;
+                    }
+                }
+            }
+        }
+
+        form {
+            position: relative;
+            margin-bottom: 24px;
+
+            span {
+                 display: inline-block;
+                 position: absolute;
+                 padding: 3px;
+                 top: 50%;
+                 transform: translateY(-50%);
+                 left: 0;
+                 width: 20px;
+                 height: 20px;
+
+                 &::before, &::after {
+                     content: '';
+                     position: absolute;
+                     top: 50%;
+                     left: 50%;
+                     transform: translate(-50%, -50%);
+                     display: inline-block;
+                     width: 2px;
+                     height: 20px;
+                     background-color: #cccccc;
+                 }
+
+                 &::after { transform: translate(-50%, -50%) rotate(90deg); }
+            }
+
+            input:focus{ outline: none; }
+        }
+
+
+        button.show-completed-toggle {
+            border: none;
+            margin: auto;
+            display: block;
+            font-size: 14px;
+
+            &:focus { outline: none; }
+
+            &:hover {
+                cursor: pointer;
+                color: #9c9c9c;
+            }
+        }
+    }
+
+}

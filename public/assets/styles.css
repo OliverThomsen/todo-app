@@ -1,0 +1,105 @@
+* {
+  font-family: helvetica-light;
+}
+
+body {
+  margin: 0;
+}
+body section {
+  margin: auto;
+  padding: 48px;
+  max-width: 800px;
+}
+body section h1 {
+  margin: 0 0 12px;
+}
+body section li, body section input {
+  margin-left: 36px;
+  width: calc(100% - 36px);
+  color: #191919;
+  border: none;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 12px 0;
+  font-size: 16px;
+}
+body section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #dcdcdc;
+}
+body section ul.hide-completed li.done {
+  display: none;
+}
+body section ul li {
+  position: relative;
+  cursor: pointer;
+}
+body section ul li span {
+  position: absolute;
+  top: 50%;
+  left: -36px;
+  height: 24px;
+  width: 24px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 1px solid #0ac50a;
+}
+body section ul li.done {
+  color: #cccccc;
+}
+body section ul li.done span::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 4px;
+  border-radius: 50%;
+  background-color: #0ac50a;
+}
+body section form {
+  position: relative;
+  margin-bottom: 24px;
+}
+body section form span {
+  display: inline-block;
+  position: absolute;
+  padding: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 20px;
+  height: 20px;
+}
+body section form span::before, body section form span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 2px;
+  height: 20px;
+  background-color: #cccccc;
+}
+body section form span::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+body section form input:focus {
+  outline: none;
+}
+body section button.show-completed-toggle {
+  border: none;
+  margin: auto;
+  display: block;
+  font-size: 14px;
+}
+body section button.show-completed-toggle:focus {
+  outline: none;
+}
+body section button.show-completed-toggle:hover {
+  cursor: pointer;
+  color: #9c9c9c;
+}
+
+/*# sourceMappingURL=styles.css.map */

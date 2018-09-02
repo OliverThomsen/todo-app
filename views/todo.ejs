@@ -3,20 +3,30 @@
     <head>
         <meta charset="utf-8">
         <title>Todo App</title>
-        <link rel="stylesheet" href="/styles/todo.css" type="text/css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="/assets/styles.css" type="text/css">
+        <script src="/assets/todo.js" type="text/javascript"></script>
+
     </head>
     <body>
         <main>
             <section>
-                <form class="todo-add" action="index.html" method="post">
-                    <input type="text" name="item" placeholder="Add new item..." required>
-                    <button type="submit"></button>
-                </form>
+                <h1>ToDo List</h1>
                 <ul>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
+                    <% items.forEach(function(item) { %>
+                        <li class="<%= (item.done === 'true') ? 'done': '' %>" >
+                            <span></span>
+                            <%= item.description %>
+                        </li>
+                    <% }) %>
                 </ul>
+                <form>
+                    <span></span>
+                    <input type="text" name="item" autocomplete="off" required>
+                </form>
+                <button class="show-completed-toggle">Show completed</button>
             </section>
         </main>
     </body>
