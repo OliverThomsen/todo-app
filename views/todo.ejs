@@ -15,11 +15,11 @@
             <section>
                 <h1>ToDo List</h1>
                 <ul>
-                    <% items.forEach(function(item) { %>
-                        <li class="<%= (item.done === 'true') ? 'done': '' %>" >
+                    <% todos.forEach(function(todo) { %>
+                        <li class="<%= (todo.done === true) ? 'done': '' %>" id="<%= todo._id %>">
                             <span>
                                 <div></div>
-                                <%= item.description %>
+                                <span><%= todo.description %></span>
                             </span>
                             <button>Delete</button>
                         </li>
@@ -27,7 +27,7 @@
                 </ul>
                 <form>
                     <span></span>
-                    <input type="text" name="item" autocomplete="off" required>
+                    <input type="text" name="todo" autocomplete="off" required>
                 </form>
                 <button class="show-completed-toggle">Show completed</button>
             </section>

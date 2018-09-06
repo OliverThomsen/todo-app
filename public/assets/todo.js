@@ -49,7 +49,7 @@ $(document).ready(function() {
         event.preventDefault()
 
         moveX = event.clientX - mousePosX
-        
+
         if (moveX < 0) {
             $(event.target).css('transform', `translateX(${moveX}px)`)
         }
@@ -72,11 +72,11 @@ $(document).ready(function() {
     }
 
     function deleteTodo($todoItem) {
-        const description = $todoItem.find('span').text().trim()
+        const data = {id: $todoItem.attr('id')}
         $.ajax({
             type: 'DELETE',
             url: '',
-            data: {description: description},
+            data: data,
             success: data => {
                 $todoItem.remove()
             }
@@ -105,22 +105,29 @@ $(document).ready(function() {
                 </li>`)
             }
         })
+
+        return false
     }
 
     function toggleDone($listItem) {
         if ($listItem.hasClass('loading')) return
 
-        const todo = {
-            description: $listItem.text().trim(),
-            done: $listItem.hasClass('done') ? false : true
+        const data = {
+            todo: {
+                description: $listItem.find('span span').text().trim(),
+                done: $listItem.hasClass('done') ? false : true
+            },
+            id: $listItem.attr('id')
         }
+
+        console.log(data)
 
         $listItem.addClass('loading')
 
         $.ajax({
             type: 'PATCH',
             url: '',
-            data: todo,
+            data: {data: JSON.stringify(data)},
             success: () => {
                 $listItem.toggleClass('done')
                 $listItem.removeClass('loading')

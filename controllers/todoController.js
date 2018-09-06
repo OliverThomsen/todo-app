@@ -1,44 +1,50 @@
 const bodyParser = require('body-parser')
 const fs = require('fs')
+const mongoose = require('mongoose')
 
 const urlEncodedParser = bodyParser.urlencoded({extended: false})
 
-let items = JSON.parse(fs.readFileSync('./data/todos.txt', 'utf8'))
+
+// Connect to database
+mongoose.connect('mongodb://test:test123@ds245022.mlab.com:45022/todo-app', {useNewUrlParser: true})
+
+const todoSchema = mongoose.Schema({
+    description: String,
+    done: Boolean
+})
+
+const Todo = mongoose.model('Todo', todoSchema)
 
 
 module.exports = (app) => {
 
     app.get('', (req, res) => {
-        res.render('todo', {items})
+        Todo.find({}, (error, data) => {
+            if (error) res.send('Somthing went wrong: ' + error)
+            res.render('todo', {todos: data})
+        })
+
     })
 
     app.post('', urlEncodedParser, (req, res) => {
-        console.log(req.body)
-        items.push(req.body)
-        save()
-
-        res.json(items)
+        Todo(req.body).save((error, data) => {
+            if (error) res.send('Somthing went wrong: ' + error)
+            res.send('success')
+        })
     })
 
     app.patch('', urlEncodedParser, (req, res) => {
-        console.log(req.body)
-        items.forEach((element) => {
-            if (element.description === req.body.description) {
-                element.done = req.body.done
-            }
+        const data = JSON.parse(req.body.data)
+        Todo.updateOne({_id: data.id}, {$set: data.todo}, (error) => {
+            if (error) res.send('Somthing went wrong: ' + error)
+            res.send('succes')
         })
-        save()
-
-        res.json(items)
     })
 
     app.delete('', urlEncodedParser, (req, res) => {
-        items = items.filter(item => req.body.description !== item.description)
-        save()
-        res.json(items)
+        Todo.findByIdAndRemove(req.body.i, (error, data) => {
+            if (error) res.send('Somthing went wrong: ' + error)
+            res.send('succes');
+        })
     })
-}
-
-function save() {
-    fs.writeFile('./data/todos.txt', JSON.stringify(items), () => {})
 }

@@ -2,25 +2,6 @@
   font-family: helvetica-light;
 }
 
-div.test {
-  width: 200px;
-  height: 200px;
-  background: red;
-  position: relative;
-}
-div.test div.testchild {
-  width: 100px;
-  height: 100px;
-  background: blue;
-  position: absolute;
-  z-index: -1;
-}
-div.test div.child2 {
-  width: 150px;
-  height: 50px;
-  background: yellow;
-}
-
 body {
   margin: 0;
 }
@@ -66,7 +47,7 @@ body section ul li.done > span div::before {
   border-radius: 50%;
   background-color: #0ac50a;
 }
-body section ul li span {
+body section ul li > span {
   display: inline-block;
   width: 100%;
   padding: 12px 0;
@@ -74,7 +55,7 @@ body section ul li span {
   position: relative;
   z-index: 1;
 }
-body section ul li span > div {
+body section ul li > span > div {
   position: absolute;
   top: 50%;
   left: -36px;

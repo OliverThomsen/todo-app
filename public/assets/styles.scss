@@ -1,25 +1,5 @@
 * { font-family: helvetica-light; }
 
-div.test {
-    width: 200px;
-    height: 200px;
-    background: red;
-    position: relative;
-
-    div.testchild {
-        width: 100px;
-        height: 100px;
-        background: blue;
-        position: absolute;
-        z-index: -1;
-    }
-    div.child2 {
-        width: 150px;
-        height: 50px;
-        background: yellow;
-    }
-}
-
 body {
     margin: 0;
 
@@ -72,7 +52,7 @@ body {
 
 
 
-                span {
+                > span {
                     display: inline-block;
                     width: 100%;
                     padding: 12px 0;
