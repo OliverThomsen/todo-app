@@ -2,6 +2,25 @@
   font-family: helvetica-light;
 }
 
+div.test {
+  width: 200px;
+  height: 200px;
+  background: red;
+  position: relative;
+}
+div.test div.testchild {
+  width: 100px;
+  height: 100px;
+  background: blue;
+  position: absolute;
+  z-index: -1;
+}
+div.test div.child2 {
+  width: 150px;
+  height: 50px;
+  background: yellow;
+}
+
 body {
   margin: 0;
 }
@@ -19,7 +38,6 @@ body section li, body section input {
   color: #191919;
   border: none;
   border-bottom: 1px solid #dcdcdc;
-  padding: 12px 0;
   font-size: 16px;
 }
 body section ul {
@@ -33,9 +51,30 @@ body section ul.hide-completed li.done {
 }
 body section ul li {
   position: relative;
+  background: red;
   cursor: pointer;
 }
+body section ul li.done {
+  color: #cccccc;
+}
+body section ul li.done > span div::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 4px;
+  border-radius: 50%;
+  background-color: #0ac50a;
+}
 body section ul li span {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 0;
+  background-color: white;
+  position: relative;
+  z-index: 1;
+}
+body section ul li span > div {
   position: absolute;
   top: 50%;
   left: -36px;
@@ -45,17 +84,18 @@ body section ul li span {
   border-radius: 50%;
   border: 1px solid #0ac50a;
 }
-body section ul li.done {
-  color: #cccccc;
-}
-body section ul li.done span::before {
-  content: "";
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin: 4px;
-  border-radius: 50%;
-  background-color: #0ac50a;
+body section ul li button {
+  cursor: pointer;
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%;
+  padding: 0 24px;
+  border: none;
+  background: red;
+  color: white;
 }
 body section form {
   position: relative;
@@ -84,6 +124,9 @@ body section form span::before, body section form span::after {
 }
 body section form span::after {
   transform: translate(-50%, -50%) rotate(90deg);
+}
+body section form input {
+  padding: 12px 0;
 }
 body section form input:focus {
   outline: none;

@@ -17,8 +17,11 @@
                 <ul>
                     <% items.forEach(function(item) { %>
                         <li class="<%= (item.done === 'true') ? 'done': '' %>" >
-                            <span></span>
-                            <%= item.description %>
+                            <span>
+                                <div></div>
+                                <%= item.description %>
+                            </span>
+                            <button>Delete</button>
                         </li>
                     <% }) %>
                 </ul>
